@@ -4,11 +4,6 @@ export class GradeSchool {
 
   roster() {
     return this.people
-    /*
-    for (let classGrade of this.people.keys()) {
-      this.grade(classGrade)
-    }
-    */
   }
 
   add(name:string, classGrade:number) {
@@ -17,13 +12,18 @@ export class GradeSchool {
       inGrade = []
     }
     inGrade.push(name)
-    this.people[classGrade] = inGrade
+    this.people[classGrade] = this.sort(inGrade)
+  }
+
+  sort(names: string[]): string[] {
+      names = names.sort((a:string, b:string) => a.localeCompare(b))
+      return names
   }
 
   grade(classGrade:number): string[] {
     let names = this.people[classGrade]
     if (names) {
-      names = names.sort((a:string, b:string) => a.localeCompare(b))
+      names = this.sort(names)
     } else { names = [] }
     return names
   }

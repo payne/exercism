@@ -48,7 +48,7 @@ describe('School', () => {
     expect(school.grade(1)).toEqual([])
   })
 
-  xtest('the students names in each grade in the roster are sorted', () => {
+  test('the students names in each grade in the roster are sorted', () => {
     school.add('Jennifer', 4)
     school.add('Kareem', 6)
     school.add('Christopher', 4)
