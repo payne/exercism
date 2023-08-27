@@ -21,19 +21,11 @@ export class GradeSchool {
   }
 
   grade(classGrade:number): string[] {
-    return this.people[classGrade]
+    let names = this.people[classGrade]
+    if (names) {
+      names = names.sort((a:string, b:string) => a.localeCompare(b))
+    } else { names = [] }
+    return names
   }
 
-  addMap(name:string, classGrade:number) {
-    let inGrade = this.people.get(classGrade)
-    if (!inGrade) {
-      inGrade = []
-    }
-    inGrade.push(name)
-    this.people.set(classGrade, inGrade)
-  }
-
-  gradeMap(classGrade:number): string[] {
-    return this.people.get(classGrade) as string[];
-  }
 }
