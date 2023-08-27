@@ -3,20 +3,24 @@ export class GradeSchool {
   people:Map<number, string[]> = new Map<number, string[]>();
 
   roster() {
-    for (let classGrade in this.people) {
-      grade(classGrade)
+    return this.people
+    /*
+    for (let classGrade of this.people.keys()) {
+      this.grade(classGrade)
     }
+    */
   }
 
   add(name:string, classGrade:number) {
-    let inGrade = this.people[classGrade];
+    let inGrade = this.people.get(classGrade)
     if (!inGrade) {
       inGrade = []
     }
     inGrade.push(name)
+    this.people.set(classGrade, inGrade)
   }
 
-  grade(classGrade:number) {
-    return this.people[classGrade];
+  grade(classGrade:number): string[] {
+    return this.people.get(classGrade) as string[];
   }
 }
