@@ -1,5 +1,7 @@
 export class GradeSchool {
-  people:any = {} // grade to list of people
+  // people:any = {} // grade to list of people
+  people:Map<number, string[]> = new Map<number, string[]>();
+
   roster() {
     for (let classGrade in this.people) {
       grade(classGrade)
