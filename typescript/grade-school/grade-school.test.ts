@@ -62,7 +62,7 @@ describe('School', () => {
     expect(school.roster()).toEqual(expectedSortedStudents)
   })
 
-  xtest('roster cannot be modified outside of module', () => {
+  test('roster cannot be modified outside of module', () => {
     school.add('Aimee', 2)
     const roster = school.roster()
     roster[2].push('Oops.')

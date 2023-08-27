@@ -1,9 +1,13 @@
+// Taking readonly clues from this random google result: 
+// https://spin.atomicobject.com/2017/08/14/typescript-readonly-intro/
+type SchoolDict = { [key: number]: string[] } // grade to list of people
+type SchoolDictReadonly = { [key: number]: string[] } // grade to list of people
 export class GradeSchool {
-  people:any = {} // grade to list of people
+  people:SchoolDict = {} // grade to list of people
   // people:Map<number, string[]> = new Map<number, string[]>();
 
-  roster() {
-    return this.people
+  roster(): SchoolDictReadonly {
+    return this.people as SchoolDictReadonly
   }
 
   add(name:string, classGrade:number) {
