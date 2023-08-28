@@ -3,8 +3,6 @@ export class GradeSchool {
   people:any = {} // grade to list of people
   // people:Map<number, string[]> = new Map<number, string[]>();
 
-  dump() { console.log(JSON.stringify(this.people)) }
-
   roster() {
     // return this.people
     let clone = JSON.parse(JSON.stringify(this.people))
@@ -38,14 +36,13 @@ export class GradeSchool {
 
   grade(classGrade:number): string[] {
     let names = this.people[classGrade]
-    console.log(`grade(${classGrade}) names=`, names)
     names = names || []
     let clone = JSON.parse(JSON.stringify(names))
     clone = clone || []
     clone = this.sort(clone)
-    let result = clone.freeze
+    clone.freeze // this does not return anything
+    let result = clone
     result = result || []
-    console.log(`grade(${classGrade}) about to return result=`, result)
     return result
   }
 
