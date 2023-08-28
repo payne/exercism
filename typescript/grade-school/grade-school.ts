@@ -3,6 +3,8 @@ export class GradeSchool {
   people:any = {} // grade to list of people
   // people:Map<number, string[]> = new Map<number, string[]>();
 
+  dump() { console.log(JSON.stringify(this.people)) }
+
   roster() {
     // return this.people
     let clone = JSON.parse(JSON.stringify(this.people))
@@ -16,22 +18,16 @@ export class GradeSchool {
     this.remove(name)
     let inGrade = this.people[classGrade]
     inGrade = inGrade || []
-    if (classGrade == 1 && name === 'Aimee') console.log('Asking about Amiee: ', inGrade)
     inGrade.push(name)
     this.people[classGrade] = this.sort(inGrade)
-    if (classGrade == 1 && name === 'Aimee') console.log('after storing and sorting: Asking about Amiee: ', inGrade)
   }
 
   remove(name: string) {
     for (let gradeLevel in this.people) {
       let students = this.people[gradeLevel]
-      const oldLen = students.length
       students = students.filter((s:string) => s !== name)
       if (students === undefined) { students = [] }
       this.people[gradeLevel] = students
-      if (oldLen != students.length) { 
-        const grade2  = this.grade(2)
-      }
     }
   }
 
@@ -42,12 +38,15 @@ export class GradeSchool {
 
   grade(classGrade:number): string[] {
     let names = this.people[classGrade]
+    console.log(`grade(${classGrade}) names=`, names)
     names = names || []
-    names = this.sort(names)
     let clone = JSON.parse(JSON.stringify(names))
     clone = clone || []
+    clone = this.sort(clone)
     let result = clone.freeze
-    return result || []
+    result = result || []
+    console.log(`grade(${classGrade}) about to return result=`, result)
+    return result
   }
 
 }
