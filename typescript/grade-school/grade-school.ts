@@ -1,4 +1,5 @@
 export class GradeSchool {
+  // Edittedd locally on chromebook
   people:any = {} // grade to list of people
   // people:Map<number, string[]> = new Map<number, string[]>();
 
@@ -22,7 +23,6 @@ export class GradeSchool {
   }
 
   remove(name: string) {
-    console.log(`start of remove`, JSON.stringify(this.people))
     for (let gradeLevel in this.people) {
       let students = this.people[gradeLevel]
       const oldLen = students.length
@@ -30,13 +30,9 @@ export class GradeSchool {
       if (students === undefined) { students = [] }
       this.people[gradeLevel] = students
       if (oldLen != students.length) { 
-        console.log(`students.length changed! students=`, students) 
-        console.log(JSON.stringify(this.people))
         const grade2  = this.grade(2)
-        console.log(`grade2`, grade2)
       }
     }
-    console.log(`end of remove`, JSON.stringify(this.people))
   }
 
   sort(names: string[]): string[] {
@@ -50,8 +46,8 @@ export class GradeSchool {
     names = this.sort(names)
     let clone = JSON.parse(JSON.stringify(names))
     clone = clone || []
-    if (classGrade === 2) { console.log(`clone is`, clone); }
-    return clone.freeze
+    let result = clone.freeze
+    return result || []
   }
 
 }
