@@ -3,7 +3,12 @@ export class GradeSchool {
   // people:Map<number, string[]> = new Map<number, string[]>();
 
   roster() {
-    return this.people
+    // return this.people
+    let clone = JSON.parse(JSON.stringify(this.people))
+    for (let gradeLevel in clone) {
+	clone[gradeLevel].freeze
+    }
+    return clone
   }
 
   add(name:string, classGrade:number) {
