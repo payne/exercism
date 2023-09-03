@@ -1,10 +1,10 @@
 export class GradeSchool {
-  // Edittedd locally on chromebook
-  people:any = {} // grade to list of people
+  // I wish I could do this without `any`
+// grade to list of people
+  people: {[key: number]: string[]} = {}
   // people:Map<number, string[]> = new Map<number, string[]>();
 
   roster() {
-    // return this.people
     let clone = JSON.parse(JSON.stringify(this.people))
     for (let gradeLevel in clone) {
 	clone[gradeLevel].freeze
